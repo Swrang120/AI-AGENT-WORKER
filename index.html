@@ -1,27 +1,68 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI Agent Worker</title>
-<meta name="description" content="AI Agent Worker — a workspace for AI content generation, video workflows, publishing and automation.">
-<style>
-:root{color-scheme:dark;--bg:#090b12;--panel:#121522;--line:#282c3d;--gold:#e8bd62;--muted:#a7aec2}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#29213a 0,transparent 35%),var(--bg);color:#f6f4ef;font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
-.wrap{max-width:1120px;margin:auto;padding:28px 22px}.nav{display:flex;justify-content:space-between;align-items:center;gap:16px}.brand{font-weight:800;letter-spacing:.3px}.brand span{color:var(--gold)}.pill{border:1px solid #54452c;border-radius:999px;padding:8px 13px;color:var(--gold);font-size:13px}
-.hero{padding:88px 0 58px;max-width:800px}.eyebrow{color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:12px}.hero h1{font-size:clamp(42px,7vw,76px);line-height:1.04;letter-spacing:-2px;margin:16px 0}.hero p{font-size:18px;color:var(--muted);max-width:670px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-block;text-decoration:none;border-radius:12px;padding:12px 18px;font-weight:750}.primary{background:var(--gold);color:#17130b}.secondary{border:1px solid var(--line);color:#fff}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:24px 0 60px}.card{background:linear-gradient(145deg,#171a29,#10121b);border:1px solid var(--line);border-radius:18px;padding:22px}.icon{font-size:25px}.card h3{margin:10px 0 5px}.card p{margin:0;color:var(--muted);font-size:14px}.section-title{font-size:26px;margin-top:30px}.notice{border:1px solid #594b2d;background:#201b12;color:#e8d9b8;border-radius:14px;padding:16px 18px;font-size:14px}.footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b12">
+  <title>AI Agent Worker</title>
+  <meta name="description" content="AI Agent Worker — a workspace for AI content, video workflows, media and automation.">
+  <style>
+    :root { color-scheme: dark; --bg:#090b12; --panel:#121522; --line:#282c3d; --gold:#e8bd62; --muted:#a7aec2; }
+    * { box-sizing:border-box; }
+    html { background:var(--bg); color-scheme:dark; }
+    body { margin:0; background:#090b12; color:#f6f4ef; font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    .wrap { width:min(1120px,100%); margin:0 auto; padding:24px 20px; }
+    .nav { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { font-weight:800; letter-spacing:.3px; }
+    .brand span { color:var(--gold); }
+    .pill { border:1px solid #54452c; border-radius:999px; padding:6px 12px; color:var(--gold); font-size:12px; }
+    .hero { padding:68px 0 42px; max-width:790px; }
+    .eyebrow { color:var(--gold); font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; }
+    h1 { font-size:clamp(40px,8vw,72px); line-height:1.06; letter-spacing:-1.8px; margin:14px 0; }
+    .hero p { color:var(--muted); font-size:18px; max-width:670px; }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:24px; }
+    .btn { display:inline-block; padding:11px 16px; border-radius:10px; font-weight:750; text-decoration:none; }
+    .primary { background:var(--gold); color:#17130b; }
+    .secondary { border:1px solid var(--line); color:#fff; }
+    .notice { border:1px solid #594b2d; background:#201b12; color:#e8d9b8; border-radius:12px; padding:14px 16px; font-size:14px; }
+    h2 { font-size:26px; margin:30px 0 16px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr)); gap:14px; margin-bottom:48px; }
+    .card { background:#121522; border:1px solid var(--line); border-radius:15px; padding:20px; }
+    .icon { font-size:24px; }
+    .card h3 { margin:8px 0 5px; }
+    .card p { color:var(--muted); font-size:14px; margin:0; }
+    footer { border-top:1px solid var(--line); padding:20px 0 8px; color:var(--muted); font-size:13px; }
+    a:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
+  </style>
 </head>
-<body><div class="wrap">
-<header class="nav"><div class="brand">✦ AI <span>AGENT WORKER</span></div><span class="pill">EARLY BUILD · WEB PREVIEW</span></header>
-<main><section class="hero"><div class="eyebrow">Create · Organize · Automate</div><h1>Your AI content<br>workspace.</h1><p>A central workspace concept for planning AI content, managing media, preparing videos, organizing publishing queues and connecting creator tools.</p><div class="actions"><a class="btn primary" href="https://github.com/Swrang120/AI-AGENT-WORKER">View source on GitHub ↗</a><a class="btn secondary" href="#features">Explore features</a></div></section>
-<div class="notice"><strong>Preview notice:</strong> This is the public website starter, not a connected production dashboard yet. AI generation, account sign-in, media processing, social publishing and live streaming require backend services and securely configured provider credentials.</div>
-<h2 class="section-title" id="features">Built around your workflow</h2><div class="grid">
-<article class="card"><div class="icon">🤖</div><h3>AI Content Studio</h3><p>Plan prompts, drafts, captions and content ideas with an AI provider integration.</p></article>
-<article class="card"><div class="icon">🎬</div><h3>Video Workflow</h3><p>Prepare media assets and connect a rendering pipeline for finished videos.</p></article>
-<article class="card"><div class="icon">☁️</div><h3>Media Library</h3><p>Organize selected assets and connect Google Drive through OAuth.</p></article>
-<article class="card"><div class="icon">📅</div><h3>Publishing Queue</h3><p>Plan scheduled posts and connect supported platforms through their approved APIs.</p></article>
-<article class="card"><div class="icon">📡</div><h3>Live Studio</h3><p>Design for explicit manual start and stop controls with a dedicated streaming worker.</p></article>
-<article class="card"><div class="icon">🔐</div><h3>Multi-user Security</h3><p>Production use needs user authentication, isolated data access and server-side secrets.</p></article>
-</div></main>
-<footer class="footer"><span>© <span id="year"></span> AI Agent Worker</span><span>Built for creators · Open development</span></footer></div><script>document.getElementById('year').textContent=new Date().getFullYear()</script></body></html>
+<body>
+  <div class="wrap">
+    <header class="nav">
+      <div class="brand">✦ AI <span>AGENT WORKER</span></div>
+      <span class="pill">WEB PREVIEW</span>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="eyebrow">Create · Organize · Automate</div>
+        <h1>Your AI content<br>workspace.</h1>
+        <p>A central workspace concept for planning AI content, managing media, preparing videos and organizing publishing workflows.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/Swrang120/AI-AGENT-WORKER">View source on GitHub ↗</a>
+          <a class="btn secondary" href="#features">Explore features</a>
+        </div>
+      </section>
+      <aside class="notice"><strong>Important:</strong> This is a static website preview, not yet the full working AI Content Factory. AI generation, sign-in, Drive access, publishing and live streaming need backend services and secure provider credentials.</aside>
+      <h2 id="features">Built around your workflow</h2>
+      <section class="grid">
+        <article class="card"><div class="icon">🤖</div><h3>AI Content Studio</h3><p>Plan prompts, drafts, captions and content ideas with an AI provider integration.</p></article>
+        <article class="card"><div class="icon">🎬</div><h3>Video Workflow</h3><p>Prepare media assets and connect a rendering pipeline for finished videos.</p></article>
+        <article class="card"><div class="icon">☁️</div><h3>Media Library</h3><p>Organize selected assets and connect Google Drive through OAuth.</p></article>
+        <article class="card"><div class="icon">📅</div><h3>Publishing Queue</h3><p>Plan scheduled posts and connect supported platforms through approved APIs.</p></article>
+        <article class="card"><div class="icon">📡</div><h3>Live Studio</h3><p>Plan manual start and stop controls with a dedicated streaming worker.</p></article>
+        <article class="card"><div class="icon">🔐</div><h3>Multi-user Security</h3><p>Production use needs authentication, isolated data access and server-side secrets.</p></article>
+      </section>
+    </main>
+    <footer>© 2026 AI Agent Worker · Open development</footer>
+  </div>
+</body>
+</html>
