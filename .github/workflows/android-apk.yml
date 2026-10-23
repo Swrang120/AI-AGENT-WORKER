@@ -1,0 +1,44 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "app/**"
+      - "*.gradle.kts"
+      - "gradle/**"
+      - ".github/workflows/android-apk.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Verify Android source exists
+        run: |
+          test -f settings.gradle.kts || (echo "Missing settings.gradle.kts. Import the original Android project first." && exit 1)
+          test -f app/build.gradle.kts || (echo "Missing app/build.gradle.kts. Import the original Android project first." && exit 1)
+
+      - name: Build debug APK
+        run: gradle --no-daemon assembleDebug
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-agent-worker-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
